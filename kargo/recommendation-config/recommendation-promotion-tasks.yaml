@@ -6,9 +6,9 @@ metadata:
 spec:
   vars:
     - name: image
-      value: docker.io/nitheesh86/microservice-recommendation
+      value: docker.io/mohamedgharbii/recommendation
     - name: repoURL
-      value: https://github.com/nitheeshp-irl/microservice-helmcharts
+      value: https://github.com/Mohamedgh01/microservice-helmcharts-gitops-project
     - name: branch
       value: main
     - name: envPath
