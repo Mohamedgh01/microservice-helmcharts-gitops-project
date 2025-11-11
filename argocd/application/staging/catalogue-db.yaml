@@ -6,7 +6,7 @@ metadata:
 spec:
   project: craftista
   source:
-    repoURL: https://github.com/nitheeshp-irl/microservice-helmcharts
+    repoURL: https://github.com/Mohamedgh01/microservice-helmcharts-gitops-projects
     targetRevision: main
     path: service-charts/catalogue-db
     plugin:
