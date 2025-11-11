@@ -9,7 +9,17 @@ service:
   type: NodePort
   port: 30080 
   nodePort: 31987         
+# staging
+service:
+  type: NodePort
+  port: 30080
+  nodePort: 31988
 
+# prod
+service:
+  type: NodePort
+  port: 30080
+  nodePort: 31989
 resources:
   limits:
     memory: "512Mi"
