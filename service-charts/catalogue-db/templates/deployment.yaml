@@ -1,29 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Chart.Name }}
   labels:
-    app: {{ .Release.Name }}
+    app: {{ .Chart.Name }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: {{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}
+        app: {{ .Chart.Name }}
     spec:
       containers:
-        - name: {{ .Release.Name }}
+        - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: POSTGRES_USER
-              value: "{{ .Values.env.POSTGRES_USER }}"
+              value: {{ .Values.env.POSTGRES_USER | quote }}
             - name: POSTGRES_PASSWORD
-              value: "{{ .Values.env.POSTGRES_PASSWORD }}"
+              value: {{ .Values.env.POSTGRES_PASSWORD | quote }}
             - name: POSTGRES_DB
-              value: "{{ .Values.env.POSTGRES_DB }}"
+              value: {{ .Values.env.POSTGRES_DB | quote }}
           ports:
             - containerPort: {{ .Values.service.port }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: data
+          {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Chart.Name }}-pvc
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
