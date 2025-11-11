@@ -7,7 +7,8 @@ image:
 
 service:
   type: NodePort
-  port: 30080  # Kubernetes choisira automatiquement nodePort
+  port: 30080 
+  nodePort: 31987         
 
 resources:
   limits:
