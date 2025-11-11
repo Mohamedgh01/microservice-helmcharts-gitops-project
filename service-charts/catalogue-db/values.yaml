@@ -9,6 +9,6 @@ service:
   port: 5432
 
 env:
-  POSTGRES_USER: devops
-  POSTGRES_PASSWORD: devops
-  POSTGRES_DB: catalogue
+  POSTGRES_USER: devops #  Valeurs par défaut 
+  POSTGRES_PASSWORD: devops #  Valeurs par défaut
+  POSTGRES_DB: catalogue #  Valeurs par défaut
