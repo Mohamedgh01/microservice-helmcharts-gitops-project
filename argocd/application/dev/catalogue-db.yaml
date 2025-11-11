@@ -11,6 +11,8 @@ spec:
     repoURL: https://github.com/nitheeshp-irl/microservice-helmcharts
     targetRevision: main
     path: service-charts/catalogue-db
+    plugin:
+      name: argocd-vault-plugin
     helm:
       valueFiles:
         - /env/dev/catalogue-db/catalogue-db-values.yaml
