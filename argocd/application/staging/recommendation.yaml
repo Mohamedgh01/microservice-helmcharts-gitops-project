@@ -13,7 +13,7 @@ spec:
     path: service-charts/recommendation
     helm:
       valueFiles:
-        - /env/staging/recommendation/recommendation-values.yaml
+        - ../../env/staging/recommendation/recommendation-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: staging
